@@ -1,10 +1,10 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.EducationProgramDir;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab2.EducationProgramDirectory;
 
-public class EduProgramRepo
+public class EducationProgramRepo
 {
-    private readonly Dictionary<Guid, EduProgram> _educationPrograms = new();
+    private readonly Dictionary<Guid, EducationProgram> _educationPrograms = new();
 
-    public void Add(EduProgram item)
+    public void Add(EducationProgram item)
     {
         ArgumentNullException.ThrowIfNull(item);
 
@@ -15,9 +15,9 @@ public class EduProgramRepo
         }
     }
 
-    public EduProgram GetById(Guid id)
+    public EducationProgram GetById(Guid id)
     {
-        if (_educationPrograms.TryGetValue(id, out EduProgram? educationProgram))
+        if (_educationPrograms.TryGetValue(id, out EducationProgram? educationProgram))
         {
             return educationProgram;
         }
@@ -25,7 +25,7 @@ public class EduProgramRepo
         throw new KeyNotFoundException("Education program not found.");
     }
 
-    public IEnumerable<EduProgram> GetAll()
+    public IEnumerable<EducationProgram> GetAll()
     {
         return _educationPrograms.Values;
     }

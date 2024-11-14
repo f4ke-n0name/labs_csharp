@@ -1,7 +1,7 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab2.LabworkDir;
-using Itmo.ObjectOrientedProgramming.Lab2.LectureDir;
+﻿using Itmo.ObjectOrientedProgramming.Lab2.LabworkDirectory;
+using Itmo.ObjectOrientedProgramming.Lab2.LectureDirectory;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDir;
+namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
 
 public class CreditSubjectFactory : ISubjectFactory
 {

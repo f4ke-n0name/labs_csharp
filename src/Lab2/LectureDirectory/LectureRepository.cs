@@ -1,8 +1,8 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab2.Utils;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2.LectureDir;
+namespace Itmo.ObjectOrientedProgramming.Lab2.LectureDirectory;
 
-public class LectureRepo : IRepo<Lecture>
+public class LectureRepository : IRepository<Lecture>
 {
     private readonly Dictionary<Guid, Lecture> _lectures = new Dictionary<Guid, Lecture>();
 

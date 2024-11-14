@@ -1,7 +1,8 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab2;
-using Itmo.ObjectOrientedProgramming.Lab2.LabworkDir;
-using Itmo.ObjectOrientedProgramming.Lab2.LectureDir;
+using Itmo.ObjectOrientedProgramming.Lab2.LabworkDirectory;
+using Itmo.ObjectOrientedProgramming.Lab2.LectureDirectory;
 using Itmo.ObjectOrientedProgramming.Lab2.SubjectDir;
+using Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
 using Xunit;
 
 namespace Lab2.Tests;
@@ -81,7 +82,7 @@ public class SubjectTests
 
         // Act & Assert
         Assert.Throws<Exception>(() =>
-            subject.ChangeTitle("New Subject Name", anotherUser.GetUserId()));
+            subject.ChangeTitle("New Subject Name", anotherUser.UserId));
     }
 
     [Fact]

@@ -1,8 +1,8 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab2.Utils;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2.LabworkDir;
+namespace Itmo.ObjectOrientedProgramming.Lab2.LabworkDirectory;
 
-public class LabWorkRepo : IRepo<LabWork>
+public class LabWorkRepository : IRepository<LabWork>
 {
     private readonly Dictionary<Guid, LabWork> _labWorks = new Dictionary<Guid, LabWork>();
 

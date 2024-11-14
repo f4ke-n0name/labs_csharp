@@ -1,21 +1,20 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab2.SubjectDir;
-using System.Collections.ObjectModel;
+﻿using Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2.EducationProgramDir;
+namespace Itmo.ObjectOrientedProgramming.Lab2.EducationProgramDirectory;
 
-public class EduProgram : IEduProgram
+public class EducationProgram : IEducationProgram
 {
     public Guid Id { get; }
 
     public string Name { get; private set; }
 
-    public ReadOnlyDictionary<int, IReadOnlyList<Subject>> SubjectBySemester { get; private set; }
+    public Dictionary<int, List<Subject>> SubjectBySemester { get; private set; }
 
     public User Responsible { get; }
 
     public Guid? BaseId { get; }
 
-    public EduProgram(
+    public EducationProgram(
         string name,
         Dictionary<int, List<Subject>> subjectsBySemester,
         User responsible,
@@ -25,56 +24,45 @@ public class EduProgram : IEduProgram
         Name = name;
         Responsible = responsible;
         BaseId = baseId;
-        SubjectBySemester = new ReadOnlyDictionary<int, IReadOnlyList<Subject>>(
-            subjectsBySemester.ToDictionary(
-                kvp => kvp.Key,
-                kvp => (IReadOnlyList<Subject>)kvp.Value.ToList().AsReadOnly()));
+        SubjectBySemester = subjectsBySemester ?? throw new ArgumentNullException(nameof(subjectsBySemester));
     }
 
     public void ChangeName(string newName, Guid authorId)
     {
-        if (Responsible.GetUserId() != authorId)
-        {
+        if (Responsible.UserId != authorId)
             throw new UnauthorizedAccessException("Only the program leader can modify the program.");
-        }
 
         Name = newName ?? throw new ArgumentNullException(nameof(newName));
     }
 
     public void ChangeSubjects(IDictionary<int, IList<Subject>> newSubjectsBySemester, Guid author)
     {
-        if (Responsible.GetUserId() != author)
-        {
+        if (Responsible.UserId != author)
             throw new UnauthorizedAccessException("Only the program leader can modify the program.");
-        }
 
         if (newSubjectsBySemester == null || newSubjectsBySemester.Count == 0)
-        {
-            throw new ArgumentException("You must specify subjects by semesters.", nameof(newSubjectsBySemester));
-        }
+            throw new ArgumentException("You must specify subjects by semesters.");
 
         var readOnlySubjects = new Dictionary<int, IReadOnlyList<Subject>>();
         foreach (KeyValuePair<int, IList<Subject>> kvp in newSubjectsBySemester)
         {
             if (kvp.Key <= 0)
-            {
-                throw new ArgumentException("Semester number must be greater than 0.", nameof(newSubjectsBySemester));
-            }
+                throw new ArgumentException("Semester number must be greater than 0.");
 
             if (kvp.Value == null || kvp.Value.Count == 0)
-            {
-                throw new ArgumentException($"Semester {kvp.Key} does not contain subjects.", nameof(newSubjectsBySemester));
-            }
+                throw new ArgumentException($"Semester {kvp.Key} does not contain subjects.");
 
             readOnlySubjects.Add(kvp.Key, kvp.Value.ToList().AsReadOnly());
         }
 
-        SubjectBySemester = new ReadOnlyDictionary<int, IReadOnlyList<Subject>>(readOnlySubjects);
+        SubjectBySemester = new Dictionary<int, List<Subject>>(newSubjectsBySemester.ToDictionary(
+            kvp => kvp.Key,
+            kvp => kvp.Value.ToList()));
     }
 
-    public IEduProgram DeepCopy(User author)
+    public IEducationProgram DeepCopy(User author)
     {
-        return new EduProgram(
+        return new EducationProgram(
             Name,
             SubjectBySemester.ToDictionary(
                 kvp => kvp.Key,

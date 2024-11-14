@@ -1,4 +1,4 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.LabworkDir;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab2.LabworkDirectory;
 
 public class LabWork : ILabWork
 {
@@ -29,30 +29,24 @@ public class LabWork : ILabWork
 
     public void ChangeName(string newName, Guid authorId)
     {
-        if (authorId != Author.GetUserId())
-        {
+        if (authorId != Author.UserId)
             throw new Exception("Only author can modify labwork materials.");
-        }
 
         LabName = newName;
     }
 
     public void ChangeDescription(string newDescription, Guid authorId)
     {
-        if (authorId != Author.GetUserId())
-        {
+        if (authorId != Author.UserId)
             throw new Exception("Only author can modify labwork materials.");
-        }
 
         LabDescription = newDescription;
     }
 
     public void ChangeCriteria(string newCriteria, Guid authorId)
     {
-        if (authorId != Author.GetUserId())
-        {
+        if (authorId != Author.UserId)
             throw new Exception("Only author can modify labwork materials.");
-        }
 
         EvalCriteria = newCriteria;
     }

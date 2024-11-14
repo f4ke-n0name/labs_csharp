@@ -1,6 +1,6 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Utils;
 
-public interface IRepo<T>
+public interface IRepository<T>
 {
     void Add(T item);
 

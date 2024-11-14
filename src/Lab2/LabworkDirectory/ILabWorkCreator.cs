@@ -1,4 +1,4 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.LabworkDir;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab2.LabworkDirectory;
 
 public interface ILabWorkCreator
 {

@@ -1,7 +1,8 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab2.LabworkDir;
-using Itmo.ObjectOrientedProgramming.Lab2.LectureDir;
+﻿using Itmo.ObjectOrientedProgramming.Lab2.LabworkDirectory;
+using Itmo.ObjectOrientedProgramming.Lab2.LectureDirectory;
+using Itmo.ObjectOrientedProgramming.Lab2.SubjectDir;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDir;
+namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
 
 public class Subject : ISubject
 {
@@ -39,7 +40,7 @@ public class Subject : ISubject
 
     public void ChangeTitle(string newTitle, Guid authorId)
     {
-        if (Author.GetUserId() != authorId)
+        if (Author.UserId != authorId)
         {
             throw new Exception("Only author can modify lecture materials.");
         }
@@ -54,7 +55,7 @@ public class Subject : ISubject
 
     public void ChangeLectureMaterials(ICollection<Lecture> newLectures, Guid authorId)
     {
-        if (Author.GetUserId() != authorId)
+        if (Author.UserId != authorId)
         {
             throw new UnauthorizedAccessException("Only author can modify subject.");
         }

@@ -1,5 +1,5 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab2;
-using Itmo.ObjectOrientedProgramming.Lab2.LabworkDir;
+using Itmo.ObjectOrientedProgramming.Lab2.LabworkDirectory;
 using Xunit;
 
 namespace Lab2.Tests;
@@ -14,9 +14,12 @@ public class LabWorkTests
         var nonAuthor = new User(Guid.NewGuid(), "NonAuthor");
         var labWork = new LabWork(author, "Lab1", "Description1", "Criteria1", 10);
 
-        // Act & Assert
-        Assert.Throws<Exception>(() =>
-            labWork.ChangeName("NewName", nonAuthor.GetUserId()));
+        // Act
+        Action act = () => labWork.ChangeName("NewName", nonAuthor.UserId);
+
+        // Assert
+        Exception exception = Assert.Throws<Exception>(act);
+        Assert.Equal("Only author can modify labwork materials.", exception.Message);
     }
 
     [Fact]
@@ -27,9 +30,12 @@ public class LabWorkTests
         var nonAuthor = new User(Guid.NewGuid(), "NonAuthor");
         var labWork = new LabWork(author, "Lab1", "Description1", "Criteria1", 10);
 
-        // Act & Assert
-        Assert.Throws<Exception>(() =>
-            labWork.ChangeDescription("NewDescription", nonAuthor.GetUserId()));
+        // Act
+        Action act = () => labWork.ChangeDescription("NewDescription", nonAuthor.UserId);
+
+        // Assert
+        Exception exception = Assert.Throws<Exception>(act);
+        Assert.Equal("Only author can modify labwork materials.", exception.Message);
     }
 
     [Fact]
@@ -40,9 +46,12 @@ public class LabWorkTests
         var nonAuthor = new User(Guid.NewGuid(), "NonAuthor");
         var labWork = new LabWork(author, "Lab1", "Description1", "Criteria1", 10);
 
-        // Act & Assert
-        Assert.Throws<Exception>(() =>
-            labWork.ChangeCriteria("NewCriteria", nonAuthor.GetUserId()));
+        // Act
+        Action act = () => labWork.ChangeCriteria("NewCriteria", nonAuthor.UserId);
+
+        // Assert
+        Exception exception = Assert.Throws<Exception>(act);
+        Assert.Equal("Only author can modify labwork materials.", exception.Message);
     }
 
     [Fact]

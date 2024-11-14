@@ -1,4 +1,4 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.LectureDir;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab2.LectureDirectory;
 
 public class Lecture : IPrototype<Lecture>
 {
@@ -45,7 +45,7 @@ public class Lecture : IPrototype<Lecture>
 
     public void ChangeName(string newName, Guid authorId)
     {
-        if (Author.GetUserId() != authorId)
+        if (Author.UserId != authorId)
         {
             throw new Exception("Only author can modify lecture materials.");
         }
@@ -55,7 +55,7 @@ public class Lecture : IPrototype<Lecture>
 
     public void ChangeDescription(string newDescription, Guid authorId)
     {
-        if (Author.GetUserId() != authorId)
+        if (Author.UserId != authorId)
         {
             throw new Exception("Only author can modify lecture materials.");
         }
@@ -65,7 +65,7 @@ public class Lecture : IPrototype<Lecture>
 
     public void ChangeContent(string newContent, Guid authorId)
     {
-        if (Author.GetUserId() != authorId)
+        if (Author.UserId != authorId)
         {
             throw new Exception("Only author can modify lecture materials.");
         }

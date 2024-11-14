@@ -1,5 +1,5 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab2;
-using Itmo.ObjectOrientedProgramming.Lab2.LectureDir;
+using Itmo.ObjectOrientedProgramming.Lab2.LectureDirectory;
 using Xunit;
 
 namespace Lab2.Tests;
@@ -16,7 +16,7 @@ public class LectureTests
 
     // Act & Assert
     Assert.Throws<Exception>(() =>
-        lecture.ChangeName("NewName", nonAuthor.GetUserId()));
+        lecture.ChangeName("NewName", nonAuthor.UserId));
     }
 
     [Fact]
@@ -29,7 +29,7 @@ public class LectureTests
 
         // Act & Assert
         Assert.Throws<Exception>(() =>
-            lecture.ChangeDescription("NewDescription", nonAuthor.GetUserId()));
+            lecture.ChangeDescription("NewDescription", nonAuthor.UserId));
     }
 
     [Fact]
@@ -42,7 +42,7 @@ public class LectureTests
 
         // Act & Assert
         Assert.Throws<Exception>(() =>
-            lecture.ChangeContent("NewContent", nonAuthor.GetUserId()));
+            lecture.ChangeContent("NewContent", nonAuthor.UserId));
     }
 
     [Fact]

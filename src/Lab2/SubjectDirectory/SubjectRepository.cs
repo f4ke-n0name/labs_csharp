@@ -1,8 +1,8 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab2.Utils;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDir;
+namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
 
-public class SubjectRepo : IRepo<Subject>
+public class SubjectRepository : IRepository<Subject>
 {
     private readonly Dictionary<Guid, Subject> _subjects = new Dictionary<Guid, Subject>();
 

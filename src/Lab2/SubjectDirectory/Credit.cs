@@ -1,4 +1,4 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDir;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
 
 public class Credit : IAssessmentType
 {
