@@ -6,7 +6,7 @@ namespace Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
 
 public class Subject : ISubject
 {
-    public Guid SubjectId { get; private set; }
+    public Guid SubjectId { get; }
 
     public Guid? BaseSubjectId { get; private set; }
 

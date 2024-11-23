@@ -12,5 +12,5 @@ public interface ISubjectFactory
         IReadOnlyList<Lecture> lectureMaterials,
         Guid? baseSubjectId = null);
 
-    ISubject CreateSubjectFromExisting(Subject originSubject);
+    ISubject Clone(Subject originSubject);
 }

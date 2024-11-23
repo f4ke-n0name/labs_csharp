@@ -80,9 +80,11 @@ public class SubjectTests
         var assessment = new Credit(100);
         var subject = new Subject("Original Subject", author, labWorks, lectureMaterials, assessment);
 
-        // Act & Assert
-        Assert.Throws<Exception>(() =>
-            subject.ChangeTitle("New Subject Name", anotherUser.UserId));
+        // Act
+        Action act = () => subject.ChangeTitle("New Subject Name", anotherUser.UserId);
+
+        // Assert
+        Assert.Throws<Exception>(act);
     }
 
     [Fact]
@@ -106,7 +108,7 @@ public class SubjectTests
         var subjectFactory = new ExamSubjectFactory(assessment.Points);
 
         // Act
-        var copiedSubject = (Subject)subjectFactory.CreateSubjectFromExisting(originalSubject);
+        var copiedSubject = (Subject)subjectFactory.Clone(originalSubject);
 
         // Assert
         Assert.Equal(originalSubject.SubjectId, copiedSubject.BaseSubjectId);

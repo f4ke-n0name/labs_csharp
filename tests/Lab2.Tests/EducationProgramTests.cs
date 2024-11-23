@@ -33,7 +33,7 @@ public class EducationProgramTests
         var eduProgram = new EducationProgram("EduProgram1", GetSampleSubjects(), _responsibleUser);
 
         // Act
-        Action act = () => eduProgram.ChangeSubjects(new Dictionary<int, IList<Subject>>(), _nonResponsibleUser.UserId);
+        Action act = () => eduProgram.ChangeSubjects(new List<SubjectBySemester>(), _nonResponsibleUser.UserId);
 
         // Assert
         UnauthorizedAccessException exception = Assert.Throws<UnauthorizedAccessException>(act);
@@ -41,17 +41,16 @@ public class EducationProgramTests
     }
 
     [Fact]
-    public void ChangeSubjects_WithInvalidSemesterNumber_ShouldThrowException()
+    public void SubjectBySemester_WithInvalidSemesterNumber_ShouldThrowException()
     {
         // Arrange
-        var eduProgram = new EducationProgram("EduProgram1", GetSampleSubjects(), _responsibleUser);
-        var invalidSubjects = new Dictionary<int, IList<Subject>>
+        var subjects = new List<Subject>
         {
-            { -1, new List<Subject> { new Subject("Subject1", _responsibleUser, new List<LabWork>(), new List<Lecture>(), new Exam(50)) } },
+            new Subject("Subject1", _responsibleUser, new List<LabWork>(), new List<Lecture>(), new Exam(50)),
         };
 
         // Act
-        Action act = () => eduProgram.ChangeSubjects(invalidSubjects, _responsibleUser.UserId);
+        Action act = () => new SubjectBySemester(-1, subjects);
 
         // Assert
         ArgumentException exception = Assert.Throws<ArgumentException>(act);
@@ -59,21 +58,17 @@ public class EducationProgramTests
     }
 
     [Fact]
-    public void ChangeSubjects_WithEmptySubjects_ShouldThrowException()
+    public void SubjectBySemester_WithEmptySubjects_ShouldThrowException()
     {
         // Arrange
         var eduProgram = new EducationProgram("EduProgram1", GetSampleSubjects(), _responsibleUser);
-        var invalidSubjects = new Dictionary<int, IList<Subject>>
-        {
-            { 1, new List<Subject>() },
-        };
 
         // Act
-        Action act = () => eduProgram.ChangeSubjects(invalidSubjects, _responsibleUser.UserId);
+        Action act = () => new SubjectBySemester(1, new List<Subject>());
 
         // Assert
         ArgumentException exception = Assert.Throws<ArgumentException>(act);
-        Assert.Equal("Semester 1 does not contain subjects.", exception.Message);
+        Assert.Equal("Subjects list cannot be empty.", exception.Message);
     }
 
     [Fact]
@@ -91,16 +86,16 @@ public class EducationProgramTests
         Assert.NotEqual(originalEduProgram.Id, clonedEducationProgram.Id);
     }
 
-    private Dictionary<int, List<Subject>> GetSampleSubjects()
+    private List<SubjectBySemester> GetSampleSubjects()
     {
         var labWorks = new List<LabWork> { new LabWork(_responsibleUser, "Lab1", "Description", "Criteria", 10) };
         var lectures = new List<Lecture> { new Lecture("Lecture1", "Description", "Content", _responsibleUser) };
         var assessment = new Credit(50);
 
-        return new Dictionary<int, List<Subject>>
+        return new List<SubjectBySemester>
         {
-            { 1, new List<Subject> { new Subject("Subject1", _responsibleUser, labWorks, lectures, assessment) } },
-            { 2, new List<Subject> { new Subject("Subject2", _responsibleUser, labWorks, lectures, assessment) } },
+            new SubjectBySemester(1, new List<Subject> { new Subject("Subject1", _responsibleUser, labWorks, lectures, assessment) }),
+            new SubjectBySemester(2, new List<Subject> { new Subject("Subject2", _responsibleUser, labWorks, lectures, assessment) }),
         };
     }
 }

@@ -22,7 +22,7 @@ public class CreditSubjectFactory : ISubjectFactory
         return new Subject(name, author, labWorks, lectureMaterials, _assessment, baseSubjectId);
     }
 
-    public ISubject CreateSubjectFromExisting(Subject originSubject)
+    public ISubject Clone(Subject originSubject)
     {
         var newLabWorks = originSubject.LabWorks.Select(lab =>
             new LabWork(

@@ -1,6 +1,4 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab2.SubjectDirectory;
-
-namespace Itmo.ObjectOrientedProgramming.Lab2.EducationProgramDirectory;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab2.EducationProgramDirectory;
 
 public class EducationProgramCreator : IEducationProgramCreator
 {
@@ -13,7 +11,7 @@ public class EducationProgramCreator : IEducationProgramCreator
 
     public EducationProgram CreateEduProgram(
         string name,
-        Dictionary<int, List<Subject>> subjectsBySemester,
+        IList<SubjectBySemester> subjectsBySemester,
         User responsible,
         Guid? baseId = null)
     {
@@ -22,6 +20,6 @@ public class EducationProgramCreator : IEducationProgramCreator
 
     public EducationProgram CreateEduProgramFromExisting(EducationProgram existingEducationProgram)
     {
-        return (EducationProgram)existingEducationProgram.DeepCopy(_eduProgramAuthor);
+        return existingEducationProgram.DeepCopy(_eduProgramAuthor);
     }
 }
