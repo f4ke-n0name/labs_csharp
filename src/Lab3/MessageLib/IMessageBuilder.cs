@@ -6,7 +6,7 @@ public interface IMessageBuilder
 
     IMessageBuilder SetBody(string body);
 
-    IMessageBuilder SetRelevance(uint relevance);
+    IMessageBuilder SetRelevance(int relevance);
 
     Message Build();
 }

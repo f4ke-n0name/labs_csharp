@@ -5,16 +5,16 @@ namespace Itmo.ObjectOrientedProgramming.Lab3.RecipientLib;
 
 public class RecipientMessanger : IRecipient
 {
-    private readonly IMessanger _messanger;
+    private readonly IMessenger _messenger;
 
-    public RecipientMessanger(IMessanger messanger)
+    public RecipientMessanger(IMessenger messenger)
     {
-        _messanger = messanger;
+        _messenger = messenger;
     }
 
     public void SendMessage(Message message)
     {
-        _messanger.SendMessageInService(message.Body);
+        _messenger.SendMessageInService(message.Body);
         Console.WriteLine($"Message sent to recipient with header: '{message.Header}' and body: '{message.Body}' using the messenger.");
     }
 }

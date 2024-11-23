@@ -8,8 +8,13 @@ public class DisplayDriver : IDisplayDriver
 
     public string Colour { get; private set; }
 
-    public DisplayDriver(string filePath, IWriteIn format, string colour)
+    public DisplayDriver(IWriteIn format, string colour)
     {
+        if (string.IsNullOrWhiteSpace(colour))
+        {
+            throw new ArgumentException("Color cannot be null, empty, or whitespace.", nameof(colour));
+        }
+
         _format = format;
         Colour = colour;
     }
@@ -28,6 +33,6 @@ public class DisplayDriver : IDisplayDriver
 
     public void Clear()
     {
-        Console.Clear();
+        _format.Clear();
     }
 }

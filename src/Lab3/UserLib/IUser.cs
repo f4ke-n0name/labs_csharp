@@ -16,7 +16,5 @@ public interface IUser
 
     UserMessageType SendToUser(Message message, IUser user);
 
-    IReadOnlyList<UserMessageStatusInfo> GetStatusOfAllMessages();
-
     void ChangeToNewStatus(Message message, UserMessageType newStatus);
 }

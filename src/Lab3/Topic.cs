@@ -19,7 +19,10 @@ public class Topic
 
     public void AddMessage(Message message)
     {
-        _recipients.ToList().ForEach(recipient => recipient.SendMessage(message));
+        foreach (IRecipient recipient in _recipients)
+        {
+            recipient.SendMessage(message);
+        }
     }
 
     public void AddRecipient(IRecipient recipient)

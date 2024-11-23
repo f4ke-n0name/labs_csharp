@@ -1,5 +1,4 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.MessageLib;
-using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.UserLib;
 
@@ -11,7 +10,7 @@ public class User : IUser
 
     private readonly List<UserMessageStatusInfo> _userMessages = new List<UserMessageStatusInfo>();
 
-    public ReadOnlyCollection<UserMessageStatusInfo> UserMessages => _userMessages.AsReadOnly();
+    public IList<UserMessageStatusInfo> UserMessages => _userMessages.AsReadOnly();
 
     public User(string name)
     {
@@ -51,11 +50,6 @@ public class User : IUser
 
         user.GetMessage(message);
         return status;
-    }
-
-    public IReadOnlyList<UserMessageStatusInfo> GetStatusOfAllMessages()
-    {
-        return UserMessages.AsReadOnly();
     }
 
     public void ChangeToNewStatus(Message message, UserMessageType newStatus)

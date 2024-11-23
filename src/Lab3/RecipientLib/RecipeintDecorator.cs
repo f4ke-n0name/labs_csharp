@@ -2,7 +2,7 @@
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.RecipientLib;
 
-public abstract class RecipeintDecorator : IRecipient
+public abstract class RecipeintDecorator
 {
     private readonly IRecipient _currentRecipient;
 

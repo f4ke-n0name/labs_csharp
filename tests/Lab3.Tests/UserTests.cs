@@ -11,7 +11,11 @@ public class UserTests
         {
             // Arrange
             var user = new User("TestUser");
-            var message = new Message("Test", "Hello World!", 0);
+            var builder = new Message.MessageBuilder();
+            builder.SetHeader("Test");
+            builder.SetBody("Hello world.");
+            builder.SetRelevance(3);
+            Message message = builder.Build();
 
             // Act
             user.GetMessage(message);
@@ -29,7 +33,11 @@ public class UserTests
         {
             // Arrange
             var user = new User("TestUser");
-            var message = new Message("Test", "Hello World!", 0);
+            var builder = new Message.MessageBuilder();
+            builder.SetHeader("Test");
+            builder.SetBody("Hello world.");
+            builder.SetRelevance(3);
+            Message message = builder.Build();
             user.GetMessage(message);
 
             // Act
@@ -48,7 +56,11 @@ public class UserTests
         {
             // Arrange
             var user = new User("TestUser");
-            var message = new Message("Test", "Hello World!", 0);
+            var builder = new Message.MessageBuilder();
+            builder.SetHeader("Test");
+            builder.SetBody("Hello world.");
+            builder.SetRelevance(3);
+            Message message = builder.Build();
             user.GetMessage(message);
             user.MakeMarkedMessage(message);
 

@@ -6,9 +6,9 @@ public class Message
 
     public string Body { get; }
 
-    public uint Relevance { get; }
+    public int Relevance { get; }
 
-    public Message(string header, string body, uint relevance)
+    private Message(string header, string body, int relevance)
     {
         Header = header;
         Body = body;
@@ -19,7 +19,7 @@ public class Message
     {
         private string? _header;
         private string? _body;
-        private uint _relevance;
+        private int _relevance;
 
         public IMessageBuilder SetHeader(string header)
         {
@@ -33,7 +33,7 @@ public class Message
             return this;
         }
 
-        public IMessageBuilder SetRelevance(uint relevance)
+        public IMessageBuilder SetRelevance(int relevance)
         {
             _relevance = relevance;
             return this;

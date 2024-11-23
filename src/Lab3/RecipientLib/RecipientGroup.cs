@@ -29,6 +29,9 @@ public class RecipientGroup : IRecipient
     public void SendMessage(Message message)
     {
         Console.WriteLine($"Sending message to group '{_groupName}':");
-        _recipients.ToList().ForEach(recipient => recipient.SendMessage(message));
+        foreach (IRecipient recipient in _recipients)
+        {
+            recipient.SendMessage(message);
+        }
     }
 }

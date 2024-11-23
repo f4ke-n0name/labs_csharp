@@ -4,15 +4,15 @@ public class RecipientUser
 {
     private string Username { get; }
 
-    private readonly uint _relevancePriority;
+    private readonly int _relevancePriority;
 
-    public RecipientUser(string username, uint relevancePriority)
+    public RecipientUser(string username, int relevancePriority)
     {
         Username = username;
         _relevancePriority = relevancePriority;
     }
 
-    public void DeliverMessage(string header, string body, uint relevance)
+    public void DeliverMessage(string header, string body, int relevance)
     {
         if (relevance > _relevancePriority)
         {

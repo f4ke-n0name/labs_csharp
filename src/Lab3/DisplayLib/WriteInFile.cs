@@ -15,4 +15,14 @@ public class WriteInFile : IWriteIn
     {
         File.AppendAllText(_filePath, message + Environment.NewLine);
     }
+
+    public void Clear()
+    {
+        if (File.Exists(_filePath))
+        {
+            File.Delete(_filePath);
+        }
+
+        File.Create(_filePath).Close();
+    }
 }

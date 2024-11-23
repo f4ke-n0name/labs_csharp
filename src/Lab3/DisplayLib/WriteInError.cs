@@ -8,4 +8,9 @@ public class WriteInError : IWriteIn
     {
         Console.Error.WriteLine(message);
     }
+
+    public void Clear()
+    {
+        Console.Clear();
+    }
 }

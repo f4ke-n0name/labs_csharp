@@ -8,4 +8,9 @@ public class WriteInConsole : IWriteIn
     {
         Console.WriteLine(message.ToString());
     }
+
+    public void Clear()
+    {
+        Console.Clear();
+    }
 }

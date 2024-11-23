@@ -13,7 +13,11 @@ public class RecipientTests
         // Arrange
         var recipientMock = new Mock<IRecipient>();
         var loggingRecipient = new LoggingRecipientDecorator(recipientMock.Object);
-        var message = new Message("Test Header", "Test Body", 1);
+        var builder = new Message.MessageBuilder();
+        builder.SetHeader("Low Importance");
+        builder.SetBody("This is a low importance message.");
+        builder.SetRelevance(3);
+        Message message = builder.Build();
 
         // Act
         loggingRecipient.SendMessage(message);
@@ -30,8 +34,12 @@ public class RecipientTests
     {
         // Arrange
         var recipientMock = new Mock<IRecipient>();
-        var lowImportanceMessage = new Message("Low Importance", "This is a low importance message.", 3);
-        uint relevancePriority = 5;
+        var builder = new Message.MessageBuilder();
+        builder.SetHeader("Low Importance");
+        builder.SetBody("This is a low importance message.");
+        builder.SetRelevance(3);
+        Message lowImportanceMessage = builder.Build();
+        int relevancePriority = 5;
         var recipientWithFilter = new RecipientFilter(recipientMock.Object, relevancePriority);
 
         // Act
@@ -46,8 +54,12 @@ public class RecipientTests
     {
         // Arrange
         var recipientMock = new Mock<IRecipient>();
-        var highImportanceMessage = new Message("High Importance", "This is a high importance message.", 5);
-        uint relevancePriority = 5;
+        var builder = new Message.MessageBuilder();
+        builder.SetHeader("High Importance");
+        builder.SetBody("This is a high importance message.");
+        builder.SetRelevance(5);
+        Message highImportanceMessage = builder.Build();
+        int relevancePriority = 5;
 
         var recipientWithFilter = new RecipientFilter(recipientMock.Object, relevancePriority);
 
@@ -69,8 +81,12 @@ public class RecipientTests
         var recipientWithFilterMock = new Mock<IRecipient>();
         var recipientWithoutFilterMock = new Mock<IRecipient>();
 
-        var lowImportanceMessage = new Message("Low Importance", "This is a low importance message.", 3);
-        uint relevancePriority = 5;
+        var builder = new Message.MessageBuilder();
+        builder.SetHeader("Low Importance");
+        builder.SetBody("This is a low importance message.");
+        builder.SetRelevance(3);
+        Message lowImportanceMessage = builder.Build();
+        int relevancePriority = 5;
         var recipientWithFilter = new RecipientFilter(recipientWithFilterMock.Object, relevancePriority);
 
         // Act

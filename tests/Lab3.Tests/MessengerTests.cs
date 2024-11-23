@@ -4,13 +4,13 @@ using Xunit;
 
 namespace Lab3.Tests;
 
-public class MessangerTests
+public class MessengerTests
 {
     [Fact]
     public void Test_SendMessageInService_CallsExpectedMethod()
     {
         // Arrange
-        var mockMessanger = new Mock<IMessanger>();
+        var mockMessanger = new Mock<IMessenger>();
         string testMessage = "Hello world";
 
         // Act

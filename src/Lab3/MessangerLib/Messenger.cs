@@ -1,19 +1,19 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab3.MessangerLib;
 
-public class Messanger : IMessanger
+public class Messenger : IMessenger
 {
     private readonly string _serviceName;
-    private readonly IMessanger _messanger;
+    private readonly IMessenger _messenger;
 
-    public Messanger(IMessanger messanger, string serviceName)
+    public Messenger(IMessenger messenger, string serviceName)
     {
-        _messanger = messanger;
+        _messenger = messenger;
         _serviceName = serviceName;
     }
 
     public void SendMessageInService(string message)
     {
         Console.WriteLine($"Мессенджер '{_serviceName}': {message}");
-        _messanger.SendMessageInService(message);
+        _messenger.SendMessageInService(message);
     }
 }
