@@ -36,6 +36,7 @@ public class Subject : ISubject
         LectureMaterials = new List<Lecture>(lectureMaterials);
         Assessment = assessment;
         BaseSubjectId = baseSubjectId;
+        Validate();
     }
 
     public void ChangeTitle(string newTitle, Guid authorId)
