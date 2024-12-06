@@ -7,7 +7,7 @@ public class CommandFactory : ICommandFactory
         return commandType switch
         {
             CommandType.Connect connect => new ConnectCommand(connect),
-            CommandType.Success disconnect => new DisconnectCommand(),
+            CommandType.Success => new DisconnectCommand(),
             CommandType.FileCopy fileCopy => new FileCopyCommand(fileCopy),
             CommandType.FileDelete fileDelete => new FileDeleteCommand(fileDelete),
             CommandType.FileMove fileMove => new FileMoveCommand(fileMove),
