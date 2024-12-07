@@ -9,23 +9,23 @@ public class FileSystemTraverser
         _fileSystem = fileSystem;
     }
 
-    public void Traverse(string path, IFileSystemVisitor visitor, int maxDepth, int currentDepth)
+    public void Traverse(string path, IFileSystemVisitor visitor, int maxDepth, int currentDepth, OutputStyle style)
     {
         if (currentDepth > maxDepth)
             return;
 
-        visitor.VisitDirectory(_fileSystem.GetFileName(path), currentDepth);
+        visitor.VisitDirectory(_fileSystem.GetFileName(path), currentDepth, style);
 
         string[] directories = _fileSystem.GetDirectories(path);
         foreach (string directory in directories)
         {
-            Traverse(directory, visitor, maxDepth, currentDepth + 1);
+            Traverse(directory, visitor, maxDepth, currentDepth + 1, style);
         }
 
         string[] files = _fileSystem.GetFiles(path);
         foreach (string file in files)
         {
-            visitor.VisitFile(Path.GetFileName(file), currentDepth + 1);
+            visitor.VisitFile(Path.GetFileName(file), currentDepth + 1, style);
         }
     }
 }

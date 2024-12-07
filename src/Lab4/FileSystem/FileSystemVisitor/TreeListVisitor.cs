@@ -11,16 +11,16 @@ public class TreeListVisitor : IFileSystemVisitor
         _fileSystem = fileSystem;
     }
 
-    public void VisitDirectory(string directoryName, int depth)
+    public void VisitDirectory(string directoryName, int depth, OutputStyle style)
     {
         if (depth <= _depth)
         {
-            _fileSystem.Write($"{new string(' ', depth * 2)}{directoryName}");
+            _fileSystem.Write($"{new string(' ', depth * 2)}{style.DirectoryStyle}{directoryName}");
         }
     }
 
-    public void VisitFile(string fileName, int depth)
+    public void VisitFile(string fileName, int depth, OutputStyle style)
     {
-        _fileSystem.Write($"{new string(' ', depth * 2)}{fileName}");
+        _fileSystem.Write($"{new string(' ', depth * 2)}{style.FileStyle}{fileName}");
     }
 }

@@ -22,5 +22,5 @@ public record class CommandType()
 
     public sealed record TreeGoto(string Path) : CommandType;
 
-    public sealed record TreeList(int Depth) : CommandType;
+    public sealed record TreeList(int Depth, OutputStyle Style) : CommandType;
 }
