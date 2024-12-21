@@ -10,13 +10,11 @@
 
     <ItemGroup>
         <PackageReference Include="Spectre.Console" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <ProjectReference Include="..\ConsolePresentation\ConsolePresentation.csproj" />
         <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <PackageVersion Update="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
-    </ItemGroup>
-
 </Project>
