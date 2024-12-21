@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Itmo.Dev.Platform.Common" />
+      <PackageReference Include="Npgsql" />
+      <PackageReference Include="NSubstitute" />
+      <PackageReference Include="Itmo.Dev.Platform.Postgres" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageVersion Update="Itmo.Dev.Platform.Postgres" Version="1.1.174" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Services\Services.csproj" />
+      <ProjectReference Include="..\Utils\Utils.csproj" />
+    </ItemGroup>
+
+</Project>
