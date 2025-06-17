@@ -3,10 +3,10 @@
 Репозиторий содержит реализации 4 лабораторных работ, посвященных принципам ООП, SOLID, GRASP и паттернам проектирования. Каждая работа решает уникальную задачу с использованием современных архитектурных подходов.
 
 ## Содержание
-1. [Lab 2: Конструктор образовательных программ](#src/Lab2)
-2. [Lab 3: Система распределения сообщений](#src/Lab3)
-3. [Lab 4: Файловый менеджер](#src/Lab4)
-4. [Lab 5: Система банкомата](#src/Lab5)
+1. [Lab 2: Конструктор образовательных программ](https://github.com/f4ke-n0name/labs_csharp/tree/main/src/Lab2)
+2. [Lab 3: Система распределения сообщений](https://github.com/f4ke-n0name/labs_csharp/tree/main/src/Lab3)
+3. [Lab 4: Файловый менеджер](https://github.com/f4ke-n0name/labs_csharp/tree/main/src/Lab4)
+4. [Lab 5: Система банкомата](https://github.com/f4ke-n0name/labs_csharp/tree/main/src/Lab5)
 
 ---
 
